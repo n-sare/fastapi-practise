@@ -1,15 +1,17 @@
 from fastapi import FastAPI, Request, HTTPException
 from exceptions import StoryException 
-from router import blog_get, blog_post, user, article, product
+from router import blog_get, blog_post, user, article, product, file
 from auth import authentication
 from db import models
 from db.database import engine
 from fastapi.responses import JSONResponse
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi.staticfiles import StaticFiles
 
 app = FastAPI()
 
 app.include_router(authentication.router)
+app.include_router(file.router)
 app.include_router(user.router)
 app.include_router(article.router)
 app.include_router(blog_get.router)
@@ -46,3 +48,4 @@ app.add_middleware(
     allow_headers = ['*']
 )
 
+app.mount('/files', StaticFiles(directory='files'), name='files')
