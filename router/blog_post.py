@@ -36,7 +36,7 @@ def create_comment(blog: BlogModel, id: int,
         #mandatory parameter
         mandatory: str = Body(..., min_length=10, max_length=15),
         v: Optional[List[str]] = Query(['1.0', '1.1', '1.2', '1.3']),
-        comment_id: int = Path(None, gt=5, le=10)
+        comment_id: int = Path(..., gt=5, le=10)
         
     ):
     return {
