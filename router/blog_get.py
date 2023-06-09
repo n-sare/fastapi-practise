@@ -24,7 +24,7 @@ def get_all_blog_posts(page = 1, page_size: Optional[int]=None, req_parameter: d
     return {'message': f'All {page_size} blogs on page {page}', 'req': req_parameter}
 
 @router.get('/{id}/comments/{comment_id}', tags=['comment'])
-def get_comment(id: int, comment_id: int, valid: bool= True, username: Optional[str]= None):
+def get_comment(id: int, comment_id: int, valid: bool, username: Optional[str]= None):
     return {'message': f'blog_id {id}, comment_id {comment_id}, valid {valid}, username {username}'}
 
 class BlogType(str, Enum):

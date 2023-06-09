@@ -33,3 +33,7 @@ build/
 # Other
 *.pyc
 *.swp
+
+.space
+
+Spacefile
