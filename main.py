@@ -2,6 +2,7 @@ from fastapi import FastAPI, Request, HTTPException
 from exceptions import StoryException 
 from router import blog_get, blog_post, user, article, product, file
 from auth import authentication
+from template import templates
 from db import models
 from db.database import engine
 from fastapi.responses import JSONResponse
@@ -14,6 +15,7 @@ app.include_router(authentication.router)
 app.include_router(file.router)
 app.include_router(user.router)
 app.include_router(article.router)
+app.include_router(templates.router)
 app.include_router(blog_get.router)
 app.include_router(blog_post.router)
 app.include_router(product.router)
@@ -49,3 +51,4 @@ app.add_middleware(
 )
 
 app.mount('/files', StaticFiles(directory='files'), name='files')
+app.mount('/template/static', StaticFiles(directory='template/static'), name='static')
