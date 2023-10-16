@@ -1,1 +1,0 @@
-api: get all products
